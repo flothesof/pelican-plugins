@@ -291,6 +291,11 @@ def pelican_init(pelicanobj):
     # Generate mathjax script
     mathjax_script = process_mathjax_script(mathjax_settings)
 
+    # Write mathjax script to disk for future use in theme
+    with open('mathjax_script.html', 'w') as f:
+        f.write("<script> {} </script>".format(mathjax_script))
+        print('writing mathjax script to mathjax_script.html')
+
     # Configure Typogrify
     configure_typogrify(pelicanobj, mathjax_settings)
 
